@@ -17,3 +17,4 @@ frontend/selenium-debug.log
 frontend/.idea
 frontend/.vscode
 frontend/package-lock.json
+/out

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cc.mrbird.febs.job.dao.JobMapper">
-    <resultMap id="BaseResultMap" type="cc.mrbird.febs.job.domain.Job">
+<mapper namespace="city.sixrealms.wheelworld.job.dao.JobMapper">
+    <resultMap id="BaseResultMap" type="city.sixrealms.wheelworld.job.domain.Job">
         <!--
           WARNING - @mbg.generated
         -->
