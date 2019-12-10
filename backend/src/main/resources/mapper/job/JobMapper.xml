@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.mrbird.febs.job.dao.JobMapper">
+    <resultMap id="BaseResultMap" type="cc.mrbird.febs.job.domain.Job">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="JOB_ID" jdbcType="DECIMAL" property="jobId"/>
+        <result column="BEAN_NAME" jdbcType="VARCHAR" property="beanName"/>
+        <result column="METHOD_NAME" jdbcType="VARCHAR" property="methodName"/>
+        <result column="PARAMS" jdbcType="VARCHAR" property="params"/>
+        <result column="CRON_EXPRESSION" jdbcType="VARCHAR" property="cronExpression"/>
+        <result column="STATUS" jdbcType="CHAR" property="status"/>
+        <result column="REMARK" jdbcType="VARCHAR" property="remark"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+
+    <select id="queryList" resultType="job">
+        select job_id          jobId,
+               bean_name       beanName,
+               method_name     methodName,
+               params,
+               cron_expression cronExpression,
+               status,
+               remark,
+               create_time     createTime
+        from t_job
+        order by job_id
+    </select>
+</mapper>
