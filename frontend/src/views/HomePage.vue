@@ -44,7 +44,7 @@
       </a-col>
       <a-col :span="12" class="project-wrapper">
         <a-card title="进行中的项目" class="project-card">
-          <a href="https://github.com/wuyouzhuguli?tab=repositories" target="_blank" slot="extra">所有项目</a>
+          <a href="https://github.com" target="_blank" slot="extra">所有项目</a>
           <table>
             <tr>
               <td>
@@ -166,28 +166,28 @@ export default {
       },
       projects: [
         {
-          name: 'Sixsector-Shiro',
-          des: 'Spring Boot 2.0.4 & Shiro1.4.0 权限管理系统。',
+          name: 'Sixsector-Naturelaw',
+          des: '天道管理系统。',
           avatar: 'F'
         },
         {
-          name: 'Sixsector-Security',
-          des: 'Spring Boot 2.0.4 & Spring Security 5.0.7 权限管理系统。',
+          name: 'Sixsector-Asura',
+          des: 'Spring Boot 2.0.4 & Spring Security 5.0.7 阿修罗道管理系统。',
           avatar: 'F'
         },
         {
-          name: 'SpringAll',
-          des: '循序渐进学习Spring Boot、Spring Cloud与Spring Security。',
+          name: 'Sixsector-Humanity',
+          des: '人道管理系统。',
           avatar: 'S'
         },
         {
-          name: 'Sixsector-Vue',
-          des: 'Sixsector前后端分离版本，前端架构采用Vue全家桶。',
+          name: 'Sixsector-Beasts',
+          des: '畜生道管理系统。',
           avatar: 'F'
         },
         {
-          name: 'Sixsector-Actuator',
-          des: '使用Spring Boot Admin 2.0.2构建，Sixsector。',
+          name: 'Sixsector-Hungry',
+          des: '饿鬼道管理系统。',
           avatar: 'F'
         }
       ],
