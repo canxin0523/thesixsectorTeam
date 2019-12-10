@@ -172,7 +172,7 @@ export default {
         },
         {
           name: 'Sixsector-Asura',
-          des: 'Spring Boot 2.0.4 & Spring Security 5.0.7 阿修罗道管理系统。',
+          des: '阿修罗道管理系统。',
           avatar: 'F'
         },
         {
