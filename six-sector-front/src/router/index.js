@@ -9,10 +9,10 @@ const router = new Router({
     redirect: '/login'
   }, {
     path: '/home',
-    component: (resolve) => require(['@/systemPage/homeIndex'], resolve)
+    component: (resolve) => require(['@/systemPage/home'], resolve)
   }, {
     path: '/login',
-    component: (resolve) => require(['@/systemPage/Login'], resolve)
+    component: (resolve) => require(['@/systemPage/login'], resolve)
   }]
 })
 

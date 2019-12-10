@@ -12,7 +12,11 @@
     </a-layout-sider>
     <a-layout>
       <a-layout-header id="hell_head">
-        <a-icon style=" margin-left: 15px;font-size: 1.2rem;vertical-align: middle;" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="()=> collapsed = !collapsed" />
+        <a-icon
+          style=" margin-left: 15px;font-size: 1.2rem;vertical-align: middle;"
+          :type="collapsed ? 'menu-unfold' : 'menu-fold'"
+          @click="()=> collapsed = !collapsed"
+        />
       </a-layout-header>
       <a-layout-content id="hell_content">
         <router-view></router-view>
@@ -90,7 +94,7 @@ export default {
 };
 </script>
 <style lang="less">
-@import "../assets/css/common.less";
+@import "../../assets/css/common.less";
 </style>
 <style lang="less" scoped>
 #homeLayout {

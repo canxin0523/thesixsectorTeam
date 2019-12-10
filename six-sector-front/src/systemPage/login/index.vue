@@ -18,6 +18,6 @@ export default {
 }
 </script>
 <style lang="less">
-@import "../assets/css/common.less";
-@import "../assets/css/login.less";
+@import "../../assets/css/common.less";
+@import "../../assets/css/login.less";
 </style>

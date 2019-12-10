@@ -4,13 +4,15 @@
 
 const path = require('path')
 
+const proxy = require('./proxy');
+
 module.exports = {
   dev: {
 
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: Object.assign({}, proxy),
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
