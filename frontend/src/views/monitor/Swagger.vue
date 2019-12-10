@@ -1,13 +1,10 @@
 <template>
-  <div>
-    <iframe src="http://www.baidu.com" width="100%" height="400"></iframe>
+  <div style="width: 100%;height: 100%;">
+    <iframe src="http://localhost:9527/swagger-ui.html" frameborder="no" style="width: 100%; height: 522px;" scrolling="auto"></iframe>
   </div>
-
 </template>
 <script>
-export default {
-  name: 'Swagger'
-}
+
 </script>
 <style>
 
