@@ -166,12 +166,12 @@ export default {
       },
       projects: [
         {
-          name: 'FEBS-Shiro',
+          name: 'Sixsector-Shiro',
           des: 'Spring Boot 2.0.4 & Shiro1.4.0 权限管理系统。',
           avatar: 'F'
         },
         {
-          name: 'FEBS-Security',
+          name: 'Sixsector-Security',
           des: 'Spring Boot 2.0.4 & Spring Security 5.0.7 权限管理系统。',
           avatar: 'F'
         },
@@ -181,13 +181,13 @@ export default {
           avatar: 'S'
         },
         {
-          name: 'FEBS-Shiro-Vue',
-          des: 'FEBS-Shiro前后端分离版本，前端架构采用Vue全家桶。',
+          name: 'Sixsector-Vue',
+          des: 'Sixsector前后端分离版本，前端架构采用Vue全家桶。',
           avatar: 'F'
         },
         {
-          name: 'FEBS-Actuator',
-          des: '使用Spring Boot Admin 2.0.2构建，用于监控FEBS。',
+          name: 'Sixsector-Actuator',
+          des: '使用Spring Boot Admin 2.0.2构建，Sixsector。',
           avatar: 'F'
         }
       ],

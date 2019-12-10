@@ -12,16 +12,16 @@ spring:
         max-pool-size: 15
         min-idle: 5
         connection-test-query: select 1
-        pool-name: FebsHikariCP
+        pool-name: SixsectorHikariCP
       # 配置默认数据源
       primary: primary
       datasource:
         # 数据源-1，名称为 primary
         primary:
           username: root
-          password: root
+          password: liudaolunhui
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://127.0.0.1:3306/sixrealms?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+          url: jdbc:mysql://47.105.71.128:7832/thesixsectorteam?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
         # 数据源-2，名称为 test
 #        test:
 #          username: root
@@ -53,7 +53,7 @@ spring:
 
 #mybatis plus 设置
 mybatis-plus:
-  type-aliases-package: city.sixrealms.wheelworld.system.domain,city.sixrealms.wheelworld.job.domain
+  type-aliases-package: city.thesixsectorteam.wheelworld.system.domain,city.thesixsectorteam.wheelworld.job.domain
   mapper-locations: classpath:mapper/*/*.xml
   configuration:
     jdbc-type-for-null: null
@@ -68,7 +68,7 @@ management:
         include: ['httptrace', 'metrics']
 
 
-febs:
+sixsector:
   # 是否异步记录用户操作日志
   openAopLog: true
   # 单次最大批量入库数量

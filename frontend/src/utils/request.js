@@ -6,7 +6,7 @@ import db from 'utils/localstorage'
 moment.locale('zh-cn')
 
 // 统一配置
-let FEBS_REQUEST = axios.create({
+let SIXSECTOR_REQUEST = axios.create({
   baseURL: 'http://127.0.0.1:9527/',
   responseType: 'json',
   validateStatus (status) {
@@ -16,7 +16,7 @@ let FEBS_REQUEST = axios.create({
 })
 
 // 拦截请求
-FEBS_REQUEST.interceptors.request.use((config) => {
+SIXSECTOR_REQUEST.interceptors.request.use((config) => {
   let expireTime = store.state.account.expireTime
   let now = moment().format('YYYYMMDDHHmmss')
   // 让token早10秒种过期，提升“请重新登录”弹窗体验
@@ -46,7 +46,7 @@ FEBS_REQUEST.interceptors.request.use((config) => {
 })
 
 // 拦截响应
-FEBS_REQUEST.interceptors.response.use((config) => {
+SIXSECTOR_REQUEST.interceptors.response.use((config) => {
   return config
 }, (error) => {
   if (error.response) {
@@ -81,7 +81,7 @@ FEBS_REQUEST.interceptors.response.use((config) => {
 
 const request = {
   post (url, params) {
-    return FEBS_REQUEST.post(url, params, {
+    return SIXSECTOR_REQUEST.post(url, params, {
       transformRequest: [(params) => {
         let result = ''
         Object.keys(params).forEach((key) => {
@@ -97,7 +97,7 @@ const request = {
     })
   },
   put (url, params) {
-    return FEBS_REQUEST.put(url, params, {
+    return SIXSECTOR_REQUEST.put(url, params, {
       transformRequest: [(params) => {
         let result = ''
         Object.keys(params).forEach((key) => {
@@ -124,7 +124,7 @@ const request = {
         }
       }
     }
-    return FEBS_REQUEST.get(`${url}${_params}`)
+    return SIXSECTOR_REQUEST.get(`${url}${_params}`)
   },
   delete (url, params) {
     let _params
@@ -138,11 +138,11 @@ const request = {
         }
       }
     }
-    return FEBS_REQUEST.delete(`${url}${_params}`)
+    return SIXSECTOR_REQUEST.delete(`${url}${_params}`)
   },
   export (url, params = {}) {
     message.loading('导出数据中')
-    return FEBS_REQUEST.post(url, params, {
+    return SIXSECTOR_REQUEST.post(url, params, {
       transformRequest: [(params) => {
         let result = ''
         Object.keys(params).forEach((key) => {
@@ -176,7 +176,7 @@ const request = {
   },
   download (url, params, filename) {
     message.loading('文件传输中')
-    return FEBS_REQUEST.post(url, params, {
+    return SIXSECTOR_REQUEST.post(url, params, {
       transformRequest: [(params) => {
         let result = ''
         Object.keys(params).forEach((key) => {
@@ -208,7 +208,7 @@ const request = {
     })
   },
   upload (url, params) {
-    return FEBS_REQUEST.post(url, params, {
+    return SIXSECTOR_REQUEST.post(url, params, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }

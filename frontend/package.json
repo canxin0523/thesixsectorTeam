@@ -1,7 +1,7 @@
 {
   "name": "six-sector-front",
   "version": "1.0.0",
-  "description": "FEBS Front By Vue",
+  "description": "Sixsector Front By Vue",
   "author": "Guokailing <gkl_worldspace@163.com>",
   "private": true,
   "scripts": {

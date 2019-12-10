@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Febs from './FEBS'
+import Sixsector from './SIXSECTOR'
 import router from './router'
 import Antd from 'ant-design-vue'
 import store from './store'
@@ -36,5 +36,5 @@ Vue.prototype.$upload = request.upload
 new Vue({
   router,
   store,
-  render: h => h(Febs)
-}).$mount('#febs')
+  render: h => h(Sixsector)
+}).$mount('#sixsector')

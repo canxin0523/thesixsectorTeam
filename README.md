@@ -30,7 +30,7 @@ admin | 1234qwer |超级管理员，拥有所有增删改查权限
 
 1. IDEA 或者 Eclipse安装lombok插件
 
-2. 新建MySQL（版本5.7.x）数据库，导入[SQL](sql/sixrealms.sql)文件
+2. 新建MySQL（版本5.7.x）数据库，导入[SQL](sql/sixsector.sql)文件
 
 3. 导入[backend项目]
 
