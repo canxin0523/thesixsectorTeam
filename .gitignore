@@ -19,3 +19,4 @@ frontend/.vscode
 frontend/package-lock.json
 /out
 /.idea
+/log
