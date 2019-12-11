@@ -41,7 +41,7 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
-    password: 
+    password:
     jedis:
       pool:
         min-idle: 8
@@ -83,7 +83,7 @@ sixsector:
     jwtTimeOut: 3600
   # Swagger相关配置
   swagger:
-    basePackage: city.sixrealms.wheelworld
+    basePackage: city.thesixsectorteam.wheelworld
     title: 六道轮回世界接口文档
     description: Six Realms Wheel World API Document.
     version: 2.0
