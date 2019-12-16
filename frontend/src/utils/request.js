@@ -7,7 +7,7 @@ moment.locale('zh-cn')
 
 // 统一配置
 let SIXSECTOR_REQUEST = axios.create({
-  baseURL: 'http://127.0.0.1:9527/',
+  baseURL: 'http://127.0.0.1:5432/',
   responseType: 'json',
   validateStatus (status) {
     // 200 外的状态码都认定为失败
