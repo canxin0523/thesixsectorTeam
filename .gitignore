@@ -20,3 +20,4 @@ frontend/package-lock.json
 /out
 /.idea
 /log
+/backend/*.iml
