@@ -125,6 +125,7 @@
   </div>
 </template>
 <script>
+  /* eslint-disable */
   import HeadInfo from '@/views/common/HeadInfo'
   import {mapState} from 'vuex'
   import moment from 'moment'
