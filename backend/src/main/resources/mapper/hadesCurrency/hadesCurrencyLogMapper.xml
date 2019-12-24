@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="city.thesixsectorteam.wheelworld.hadesCurrency.dao.CurrencyDao">
+
+        <select id="getCurrencyList" resultType="java.util.Map">
+           SELECT
+                t1.*, t2.total
+            FROM
+                t_user t1,
+                t_mingjie_hadescurrency t2
+            WHERE
+                t1.USER_ID = t2.userId
+            <if test="user.status != null and user.status != ''">
+                AND t1. STATUS = #{user.status} <!-- 状态字段 -->
+            </if>
+            <if test="user.username != null and user.username != ''">
+                AND t1.USERNAME = #{user.username}  <!-- 用户名称 -->
+            </if>
+            <if test="user.email != null and user.email != ''">
+                AND t1.EMAIL = #{user.email}  <!-- 用户邮箱 -->
+            </if>
+            order by t1.CREATE_TIME desc
+        </select>
+
+</mapper>
