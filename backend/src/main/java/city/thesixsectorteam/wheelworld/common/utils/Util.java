@@ -1,4 +1,4 @@
-package org.dispense.comm.util;
+package city.thesixsectorteam.wheelworld.common.utils;
 
 
 import java.beans.BeanInfo;

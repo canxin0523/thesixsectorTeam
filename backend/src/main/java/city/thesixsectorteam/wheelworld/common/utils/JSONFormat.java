@@ -1,4 +1,4 @@
-package com.brez.util;
+package city.thesixsectorteam.wheelworld.common.utils;
 
 
 import net.sf.json.JSONArray;
@@ -128,9 +128,7 @@ public class JSONFormat implements JsonValueProcessor {
      * @param list                   数据列表
      * @param formatType             时间格式 如yyyy/MM/dd HH:mm:ss
      * @param clazz                  时间类型 如Timestamp
-     * @param filterStr可过滤的字段列表(可为空)
      * @return
-     * @作者: 张晓东
      * @创建日期： 2015年12月8日
      * @返回值： JSONArray
      * @修改记录（修改时间、作者、原因）：
@@ -182,9 +180,7 @@ public class JSONFormat implements JsonValueProcessor {
      * @param map               数据对象
      * @param formatType        时间格式 如yyyy/MM/dd HH:mm:ss
      * @param clazz             时间类型 如Timestamp
-     * @param filterStr可过滤的字段列表
      * @return
-     * @作者: 张晓东
      * @创建日期： 2015年12月8日
      * @返回值： JSONArray
      * @修改记录（修改时间、作者、原因）：

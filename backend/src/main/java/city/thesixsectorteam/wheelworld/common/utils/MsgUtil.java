@@ -1,4 +1,4 @@
-package com.brez.util;
+package city.thesixsectorteam.wheelworld.common.utils;
 
 import com.github.pagehelper.PageInfo;
 import net.sf.json.JSONObject;
@@ -19,7 +19,6 @@ public class MsgUtil {
      *
      * @param msg 提示消息
      * @return
-     * @作者: 张晓东
      * @创建日期： 2016年11月2日
      */
     public static String success() {
@@ -34,7 +33,6 @@ public class MsgUtil {
      *
      * @param msg 提示消息
      * @return
-     * @作者: 张晓东
      * @创建日期： 2016年11月2日
      */
     public static String success(String msg) {
@@ -49,7 +47,6 @@ public class MsgUtil {
      *
      * @param msg 提示消息
      * @return
-     * @作者: 张晓东
      * @创建日期： 2016年11月2日
      */
     public static String success(JSONObject data) {
@@ -66,7 +63,6 @@ public class MsgUtil {
      * @param msg  提示消息
      * @param code 自定义状态吗
      * @return
-     * @作者: 张晓东
      * @创建日期： 2016年11月2日
      */
     public static String success(String msg, Integer code) {
@@ -117,7 +113,6 @@ public class MsgUtil {
      * @param key
      * @param value
      * @return
-     * @作者: hxl
      */
     public static String success(String msg, List<?> list, Class<?> cls) {
         JSONObject result = new JSONObject();
@@ -194,7 +189,6 @@ public class MsgUtil {
      * @param msg    提示消息
      * @param result 返回对象
      * @return
-     * @作者: 张晓东
      * @创建日期： 2016年11月2日
      */
     public static String success(String msg, JSONObject result) {
@@ -209,7 +203,6 @@ public class MsgUtil {
      * @param msg    提示消息
      * @param object 返回对象
      * @return
-     * @作者: 张晓东
      * @创建日期： 2016年11月2日
      */
     public static String success(String msg, Object object) {
@@ -223,7 +216,6 @@ public class MsgUtil {
      * @param object 返回对象
      * @param cls    时间类型类对象
      * @return
-     * @作者: 张晓东
      * @创建日期： 2016年11月2日
      */
     @SuppressWarnings("rawtypes")
@@ -243,7 +235,6 @@ public class MsgUtil {
      * @param code   自定义状态码
      * @param result 返回对象
      * @return
-     * @作者: 张晓东
      * @创建日期： 2016年11月2日
      */
     public static String success(String msg, Integer code, JSONObject result) {
@@ -257,7 +248,6 @@ public class MsgUtil {
      *
      * @param msg 提示消息
      * @return
-     * @作者: 张晓东
      * @创建日期： 2016年11月2日
      */
     public static String fail() {
@@ -272,7 +262,6 @@ public class MsgUtil {
      *
      * @param msg 提示消息
      * @return
-     * @作者: 张晓东
      * @创建日期： 2016年11月2日
      */
     public static String fail(String msg) {
@@ -288,7 +277,6 @@ public class MsgUtil {
      * @param msg  提示消息
      * @param code 自定义状态码
      * @return
-     * @作者: 张晓东
      * @创建日期： 2016年11月2日
      */
     public static String fail(String msg, Integer code) {
@@ -304,7 +292,6 @@ public class MsgUtil {
      * @param msg    提示消息
      * @param result 返回对象
      * @return
-     * @作者: 张晓东
      * @创建日期： 2016年11月2日
      */
     public static String fail(String msg, JSONObject result) {
@@ -320,7 +307,6 @@ public class MsgUtil {
      * @param code   自定义状态码
      * @param result 返回对象
      * @return
-     * @作者: 张晓东
      * @创建日期： 2016年11月2日
      */
     public static String fail(String msg, Integer code, JSONObject result) {
