@@ -4,6 +4,7 @@ import city.thesixsectorteam.wheelworld.common.annotation.Log;
 import city.thesixsectorteam.wheelworld.hadesCurrency.domain.HadesCurrencyLog;
 import city.thesixsectorteam.wheelworld.hadesCurrency.service.CurrencyLogService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,7 @@ public class CurrencyLogController {
      * @return java.lang.String
     **/
     @Log("查询所有日志")
+    @RequiresPermissions("currencyLog:list")
     @RequestMapping("queryAll")
     public String queryAll(HadesCurrencyLog hadesCurrencyLog,String beginTime,String endTime){
         return currencyLogService.queryAll(hadesCurrencyLog,beginTime,endTime);
@@ -47,6 +49,7 @@ public class CurrencyLogController {
     **/
     @Log("删除日志")
     @RequestMapping("deteleByIds")
+    @RequiresPermissions("currencyLog:delete")
     public String deteleByIds(String ids){
         return currencyLogService.deteleByIds(ids);
     }

@@ -2,7 +2,9 @@ package city.thesixsectorteam.wheelworld.area.service;
 
 import city.thesixsectorteam.wheelworld.area.dao.AreaDao;
 import city.thesixsectorteam.wheelworld.area.domain.Area;
+import city.thesixsectorteam.wheelworld.common.exception.SixsectorException;
 import city.thesixsectorteam.wheelworld.common.utils.MsgUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,9 +50,9 @@ public class AreaService {
      * @Param [area]
      * @return java.lang.String
     **/
-    public String queryAll(Area area) {
+    public List<Area> queryAll(Area area) {
         List<Area> list = areaDao.queryAll(area);
-        return MsgUtil.success(list, Date.class);
+        return list;
     }
     
     /**
@@ -63,5 +65,41 @@ public class AreaService {
     public String addArea(Area area) {
         areaDao.addArea(area);
         return MsgUtil.success();
+    }
+    
+    /**
+     * @Author zmf
+     * @Description //TODO 地区修改
+     * @Date 14:43 2019/12/24
+     * @Param [area]
+     * @return java.lang.String
+    **/
+    public String updateArea(Area area) {
+        if(area!=null){
+            areaDao.updateArea(area);
+            return MsgUtil.success();
+        }else{
+            return MsgUtil.fail("地区对象为空");
+        }
+    }
+    
+    /**
+     * @Author zmf
+     * @Description //TODO  地区删除
+     * @Date 14:59 2019/12/24
+     * @Param [ids]
+     * @return java.lang.String
+    **/
+    public String deteleArea(String ids) throws SixsectorException {
+        try {
+            String[] split = ids.split(",");
+            for (String str:split) {
+                areaDao.deteleArea(str);
+            }
+            return MsgUtil.success();
+        }catch (Exception e){
+            String msg = "删除失败";
+            throw new SixsectorException(msg);
+        }
     }
 }

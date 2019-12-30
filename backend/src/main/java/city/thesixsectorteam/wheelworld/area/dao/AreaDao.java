@@ -30,4 +30,7 @@ public interface AreaDao {
 
     void addArea(@Param("area") Area area);
 
+    void updateArea(@Param("area") Area area);
+
+    void deteleArea(@Param("id") String str);
 }

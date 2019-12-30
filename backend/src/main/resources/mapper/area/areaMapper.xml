@@ -15,4 +15,29 @@
         insert into t_area (code,name,info,createTime,fatherId)
         values (#{area.code},#{area.name},#{area.info},#{area.createTime},#{area.fatherId})
     </insert>
+
+    <!--  地区修改  -->
+    <update id="updateArea">
+        update t_area
+        <set>
+            <if test="area.code != null and area.code != ''">
+                code = #{area.code},
+            </if>
+            <if test="area.name != null and area.name != ''">
+                name = #{area.name},
+            </if>
+            <if test="area.info != null and area.info != ''">
+                info = #{area.info},
+            </if>
+            <if test="area.fatherId != null and area.fatherId != ''">
+                fatherId = #{area.fatherId}
+            </if>
+        </set>
+        where id = #{area.id}
+    </update>
+
+    <!-- 地区删除 -->
+    <delete id="deteleArea">
+        delete * from t_area where id = #{id}
+    </delete>
 </mapper>

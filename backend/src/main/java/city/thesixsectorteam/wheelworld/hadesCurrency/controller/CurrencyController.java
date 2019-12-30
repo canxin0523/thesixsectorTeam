@@ -6,6 +6,7 @@ import city.thesixsectorteam.wheelworld.hadesCurrency.service.CurrencyService;
 import city.thesixsectorteam.wheelworld.system.domain.User;
 import com.github.pagehelper.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +41,7 @@ public class CurrencyController {
     **/
     @Log("查询，根据用户名称，用户状态，用户邮箱,用户id条件查询")
     @RequestMapping("currencyList")
+    @RequiresPermissions("currency:view")
     public List<Map<String, Object>> currencyList(User currency){
         return currencyService.getCurrencyList(currency);
     }
@@ -52,6 +54,7 @@ public class CurrencyController {
     **/
     @Log("添加或者修改")
     @RequestMapping("saveUpdateCurrency")
+    @RequiresPermissions("currency:saveUpdate")
     public String addCurrency(HadesCurrency hadesCurrency){
         return currencyService.saveUpdateCurrency(hadesCurrency);
     }
