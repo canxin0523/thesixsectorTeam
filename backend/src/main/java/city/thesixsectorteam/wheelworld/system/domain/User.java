@@ -92,6 +92,8 @@ public class User implements Serializable {
     private transient String roleId;
     @ExcelField(value = "角色")
     private transient String roleName;
+    @ExcelField(value = "年龄")
+    private Integer age;
 
     // 排序字段
     private transient String sortField;
