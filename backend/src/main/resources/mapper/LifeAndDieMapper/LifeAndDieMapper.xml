@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="city.thesixsectorteam.wheelworld.lifeAndDie.dao.LifeAndDieDao">
+
+    <select id="getListByLife" resultType="java.util.Map">
+        select t1.*,t2.overAge from t_user t1,t_mingjie_lifeanddie t2
+        where t1.USER_ID = t2.userId
+        <if test="life.statu != null and life.statu != ''">
+            and t2.statu = #{life.statu}
+        </if>
+        <if test="user.status != null and user.status != ''">
+            AND t1. STATUS = #{user.status} <!-- 状态字段 -->
+        </if>
+        <if test="user.username != null and user.username != ''">
+            AND t1.USERNAME = #{user.username}  <!-- 用户名称 -->
+        </if>
+        <if test="user.email != null and user.email != ''">
+            AND t1.EMAIL = #{user.email}  <!-- 用户邮箱 -->
+        </if>
+        order by t2.createTime desc
+    </select>
+
+    <insert id="saveLife">
+        insert into t_mingjie_lifeanddie(userId,createTime,age,totalAge,overAge,statu)
+        values (#{life.userId},#{life.createTime},#{life.age},#{life.totalAge},#{life.overAge},#{life.statu})
+    </insert>
+
+    <update id="updateLifeByStatu">
+        update t_mingjie_lifeanddie set age = age+1,overAge = overAge-1 where statu = 1
+    </update>
+
+    <update id="updateStatuByOverAge">
+        update t_mingjie_lifeanddie set statu = 2 where overAge = 0
+    </update>
+
+    <update id="updateTotalAge">
+        update t_mingjie_lifeanddie set overAge = #{life.totalAge} -age, totalAge = #{life.totalAge} where userId = #{life.userId}
+    </update>
+</mapper>
