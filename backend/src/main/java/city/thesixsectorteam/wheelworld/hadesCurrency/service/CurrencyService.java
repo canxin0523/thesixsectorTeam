@@ -1,6 +1,7 @@
 package city.thesixsectorteam.wheelworld.hadesCurrency.service;
 
 import city.thesixsectorteam.wheelworld.common.utils.MsgUtil;
+import city.thesixsectorteam.wheelworld.common.utils.SixsectorUtil;
 import city.thesixsectorteam.wheelworld.common.utils.Util;
 import city.thesixsectorteam.wheelworld.hadesCurrency.dao.CurrencyDao;
 import city.thesixsectorteam.wheelworld.hadesCurrency.domain.HadesCurrency;
@@ -59,7 +60,7 @@ public class CurrencyService {
         HadesCurrencyLog hadesCurrencyLog = new HadesCurrencyLog();
         hadesCurrencyLog.setCreateTime(new Date());
         hadesCurrencyLog.setStatus(status);
-        hadesCurrencyLog.setUserId(hadesCurrency.getUserId());
+        hadesCurrencyLog.setUserId(SixsectorUtil.getCurrentUser().getUserId());
         hadesCurrencyLog.setInfo(str);
         currencyLogService.saveCurrencyLog(hadesCurrencyLog);
         return MsgUtil.success();
