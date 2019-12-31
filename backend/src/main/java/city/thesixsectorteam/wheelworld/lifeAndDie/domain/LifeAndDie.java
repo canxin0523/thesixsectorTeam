@@ -16,13 +16,13 @@ import java.util.Date;
  * 修改备注：
  */
 @Data
-@TableName("t_mingjie_LifeAndDie")
+@TableName("t_mingjie_lifeanddie")
 @Excel("生死簿记录表")
 public class LifeAndDie {
     @TableId(value = "id",type = IdType.AUTO)
     private Long    id;         //主键id
 
-    private String  userId;     //用户id
+    private Long  userId;     //用户id
 
     private Date createTime; //创建时间
 
@@ -32,6 +32,6 @@ public class LifeAndDie {
 
     private Integer overAge;    //剩余
 
-    private Integer status;  //如果状态为1 则age totalAge overAge代表的是生者的  当前  总   剩余
+    private Integer statu;  //如果状态为1 则age totalAge overAge代表的是生者的  当前  总   剩余
                                 //如果状态为2 则代表的为  当前  总  剩余     （服役）
 }
