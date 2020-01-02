@@ -54,7 +54,7 @@ public class CurrencyController {
     **/
     @Log("添加或者修改")
     @RequestMapping("saveUpdateCurrency")
-    @RequiresPermissions("currency:saveUpdate")
+    @RequiresPermissions("currency:add")
     public String addCurrency(HadesCurrency hadesCurrency){
         return currencyService.saveUpdateCurrency(hadesCurrency);
     }

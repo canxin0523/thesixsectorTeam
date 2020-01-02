@@ -34,7 +34,7 @@ public class CurrencyLogController {
      * @return java.lang.String
     **/
     @Log("查询所有日志")
-    @RequiresPermissions("currencyLog:list")
+    @RequiresPermissions("currencyLog:view")
     @RequestMapping("queryAll")
     public String queryAll(HadesCurrencyLog hadesCurrencyLog,String beginTime,String endTime){
         return currencyLogService.queryAll(hadesCurrencyLog,beginTime,endTime);
