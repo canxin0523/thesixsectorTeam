@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="city.thesixsectorteam.wheelworld.plague.dao.PlagueInfoDao" >
+
+  <resultMap id="BaseResultMap" type="city.thesixsectorteam.wheelworld.plague.domain.PlagueInfo" >
+    <id column="PLAGUE_INFO_ID" property="plagueInfoId" jdbcType="BIGINT" />
+    <result column="PLAGUE_ID" property="plagueId" jdbcType="BIGINT" />
+    <result column="AREA_ID" property="areaId" jdbcType="BIGINT" />
+    <result column="HAPPEN_TIME" property="happenTime" jdbcType="TIMESTAMP" />
+    <result column="INFO" property="info" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List" >
+    PLAGUE_INFO_ID, PLAGUE_ID, AREA_ID, HAPPEN_TIME, INFO
+  </sql>
+  <select id="findPlagueInfoByPrimaryKey"  resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select
+        <include refid="Base_Column_List"/>
+    from
+        t_plague_info
+    where
+        PLAGUE_INFO_ID = #{plagueInfoId,jdbcType=BIGINT}
+  </select>
+
+  <select id="findPlagueInfoByPlagueId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select
+         <include refid="Base_Column_List"/>
+    from
+          t_plague_info
+    where
+          PLAGUE_ID = #{plagueId,jdbcType=BIGINT}
+  </select>
+
+  <select id="findPlagueInfoByAreaId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+    select
+         <include refid="Base_Column_List"/>
+    from
+          t_plague_info
+    where
+           AREA_ID = #{areaId,jdbcType=BIGINT}
+  </select>
+
+
+</mapper>
