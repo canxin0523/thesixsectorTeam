@@ -36,7 +36,7 @@ public class AreaController{
 
     @Log("查询所有地区")
     @RequestMapping("queryAll")
-    @RequiresPermissions("area:list")
+    @RequiresPermissions("area:view")
     public String queryAll(Area area){
         return MsgUtil.success(areaService.queryAll(area), Date.class);
     }
