@@ -40,14 +40,14 @@ public class LifeAndDieController {
     **/
     @Log("查询生/死者数据")
     @RequestMapping("lifeList")
-    @RequiresPermissions("life:lifeList")
+    @RequiresPermissions("life:view")
     public List<Map<String,Object>> lifeList(User user,LifeAndDie life){
         return lifeAndDieService.getListByLife(user,life);
     }
 
     @Log("初始化数据")
     @RequestMapping("saveLife")
-    @RequiresPermissions("life:saveLife")
+    @RequiresPermissions("life:add")
     public void saveLife(User user){
         lifeAndDieService.saveLife(user);
     }
@@ -71,7 +71,7 @@ public class LifeAndDieController {
     **/
     @Log("修改寿命")
     @RequestMapping("updateTotalAge")
-    @RequiresPermissions("life:updateTotalAge")
+    @RequiresPermissions("life:update")
     public String updateTotalAge(LifeAndDie life){
         return lifeAndDieService.updateTotalAge(life);
     }
