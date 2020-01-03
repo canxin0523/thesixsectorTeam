@@ -9,6 +9,8 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,18 +41,22 @@ public class LifeAndDieController {
      * @return java.util.List<java.util.Map<java.lang.String,java.lang.String>>
     **/
     @Log("查询生/死者数据")
-    @RequestMapping("lifeList")
+    @GetMapping("lifeList")
     @RequiresPermissions("life:view")
     public List<Map<String,Object>> lifeList(User user,LifeAndDie life){
         return lifeAndDieService.getListByLife(user,life);
     }
 
     @Log("初始化数据")
-    @RequestMapping("saveLife")
+    @PostMapping("saveLife")
     @RequiresPermissions("life:add")
     public void saveLife(User user){
         lifeAndDieService.saveLife(user);
     }
+
+
+
+
     @Log("根据状态修改年龄")
     @Scheduled(cron = "0 0 1 * * ?")
     public void  updateLifeByStatu(){
@@ -70,7 +76,7 @@ public class LifeAndDieController {
      * @return java.lang.String
     **/
     @Log("修改寿命")
-    @RequestMapping("updateTotalAge")
+    @PostMapping("updateTotalAge")
     @RequiresPermissions("life:update")
     public String updateTotalAge(LifeAndDie life){
         return lifeAndDieService.updateTotalAge(life);

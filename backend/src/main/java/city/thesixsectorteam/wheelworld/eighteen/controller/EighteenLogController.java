@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,14 +32,14 @@ public class EighteenLogController {
     private EighteenLogService eighteenLogService;
 
     @Log("保存18日志记录信息")
-    @RequestMapping("saveLog")
+    @PostMapping("saveLog")
     @RequiresPermissions("eightLog:add")
     public String saveLog(EighteenLog eighteenLog){
         return eighteenLogService.saveLog(eighteenLog);
     }
 
     @Log("查询出数据用户信息，狱名信息，日志信息")
-    @RequestMapping("logList")
+    @GetMapping("logList")
     @RequiresPermissions("eightLog:view")
     public List<Map<String,Object>> logList(String userName,String eightName){
         return eighteenLogService.logList(userName,eightName);

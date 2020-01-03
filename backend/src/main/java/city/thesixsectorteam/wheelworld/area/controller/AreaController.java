@@ -11,10 +11,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 import java.util.List;
 
@@ -35,14 +35,14 @@ public class AreaController{
     private AreaService areaService;
 
     @Log("查询所有地区")
-    @RequestMapping("queryAll")
+    @GetMapping("queryAll")
     @RequiresPermissions("area:view")
     public String queryAll(Area area){
         return MsgUtil.success(areaService.queryAll(area), Date.class);
     }
 
     @Log("新增地区信息")
-    @RequestMapping("addArea")
+    @PostMapping("addArea")
     @RequiresPermissions("area:add")
     public String addArea(Area area){
         return areaService.addArea(area);
@@ -50,7 +50,7 @@ public class AreaController{
 
 
     @Log("poi批量导出地区数据")
-    @RequestMapping("excelEnter")
+    @PostMapping("excelEnter")
     @RequiresPermissions("area:excel")
     public void  excelEnter(Area area, HttpServletResponse response) throws SixsectorException {
         try {
@@ -64,16 +64,16 @@ public class AreaController{
     }
 
     @Log("地区修改")
-    @RequestMapping("updateArea")
+    @PostMapping("updateArea")
     @RequiresPermissions("area:update")
     public  String  updateArea(Area area){
         return areaService.updateArea(area);
     }
 
     @Log("删除地区")
-    @RequestMapping("deteleArea")
+    @DeleteMapping("deteleArea/${ids}")
     @RequiresPermissions("area:delete")
-    public String  deteleArea(String ids) throws SixsectorException {
+    public String  deteleArea(@NotBlank(message = "{required}") @PathVariable String ids) throws SixsectorException {
         return areaService.deteleArea(ids);
     }
 }

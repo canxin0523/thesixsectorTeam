@@ -8,6 +8,8 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,14 +39,14 @@ public class SoulController {
     }
 
     @Log("修改")
-    @RequestMapping("updateSoul")
+    @PostMapping("updateSoul")
     @RequiresPermissions("soul:update")
     public String updateSoul(Soul soul){
         return soulService.updateSoul(soul);
     }
 
     @Log("查询")
-    @RequestMapping("queryList")
+    @GetMapping("queryList")
     @RequiresPermissions("soul:view")
     public List<Map<String,Object>> queryList(Soul soul){
         return soulService.queryList(soul);

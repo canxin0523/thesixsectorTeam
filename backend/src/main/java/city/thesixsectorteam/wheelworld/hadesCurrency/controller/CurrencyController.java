@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,7 +42,7 @@ public class CurrencyController {
      * @return java.lang.String
     **/
     @Log("查询，根据用户名称，用户状态，用户邮箱,用户id条件查询")
-    @RequestMapping("currencyList")
+    @GetMapping("currencyList")
     @RequiresPermissions("currency:view")
     public List<Map<String, Object>> currencyList(User currency){
         return currencyService.getCurrencyList(currency);
@@ -53,7 +55,7 @@ public class CurrencyController {
      * @return java.lang.String
     **/
     @Log("添加或者修改")
-    @RequestMapping("saveUpdateCurrency")
+    @PostMapping("saveUpdateCurrency")
     @RequiresPermissions("currency:add")
     public String addCurrency(HadesCurrency hadesCurrency){
         return currencyService.saveUpdateCurrency(hadesCurrency);

@@ -7,8 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.constraints.NotBlank;
 
 /**
  * 类/方法名称：CurrencyLogController
@@ -34,8 +35,8 @@ public class CurrencyLogController {
      * @return java.lang.String
     **/
     @Log("查询所有日志")
+    @GetMapping("queryAll")
     @RequiresPermissions("currencyLog:view")
-    @RequestMapping("queryAll")
     public String queryAll(HadesCurrencyLog hadesCurrencyLog,String beginTime,String endTime){
         return currencyLogService.queryAll(hadesCurrencyLog,beginTime,endTime);
     }
@@ -48,9 +49,9 @@ public class CurrencyLogController {
      * @return java.lang.String
     **/
     @Log("删除日志")
-    @RequestMapping("deteleByIds")
+    @DeleteMapping("deteleByIds/{ids}")
     @RequiresPermissions("currencyLog:delete")
-    public String deteleByIds(String ids){
+    public String deteleByIds(@NotBlank(message = "{required}") @PathVariable String ids){
         return currencyLogService.deteleByIds(ids);
     }
 }

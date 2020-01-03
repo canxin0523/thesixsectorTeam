@@ -9,6 +9,8 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -51,7 +53,7 @@ public class TrialController {
      * @return java.util.List<java.util.Map<java.lang.String,java.lang.Object>>
     **/
     @Log("根据type来查询待审还是已审")
-    @RequestMapping("queryList")
+    @GetMapping("queryList")
     @RequiresPermissions("trial:view")
     public List<Map<String,Object>> queryList(Trial trial){
         return trialService.queryList(trial);
@@ -64,7 +66,7 @@ public class TrialController {
      * @return java.lang.String
     **/
     @Log("审问")
-    @RequestMapping("trialUpdate")
+    @PostMapping("trialUpdate")
     @RequiresPermissions("trial:update")
     public String  trialUpdate(Trial trial){
         return trialService.trialUpdate(trial);

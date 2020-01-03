@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,7 +32,7 @@ public class EighteenController {
     private EighteenService eighteenService;
 
     @Log("查询所有")
-    @RequestMapping("queryEightList")
+    @GetMapping("queryEightList")
     @RequiresPermissions("eight:view")
     public List<Map<String,Object>> queryEightList(Eighteen eighteen){
         return eighteenService.queryEightList(eighteen);
@@ -38,14 +40,14 @@ public class EighteenController {
 
 
     @Log("新增数据")
-    @RequestMapping("addEighteen")
+    @PostMapping("addEighteen")
     @RequiresPermissions("eight:add")
     public String  addEighteen(Eighteen eighteen){
         return eighteenService.addEighteen(eighteen);
     }
 
     @Log("修改数据")
-    @RequestMapping("updateEighteen")
+    @PostMapping("updateEighteen")
     @RequiresPermissions("eight:update")
     public String updateEighteen(Eighteen eighteen){
         return eighteenService.updateEighteen(eighteen);
