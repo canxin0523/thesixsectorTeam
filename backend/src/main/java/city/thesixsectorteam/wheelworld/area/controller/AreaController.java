@@ -71,7 +71,7 @@ public class AreaController{
     }
 
     @Log("删除地区")
-    @DeleteMapping("deteleArea/${ids}")
+    @GetMapping("deteleArea")
     @RequiresPermissions("area:delete")
     public String  deteleArea(@NotBlank(message = "{required}") @PathVariable String ids) throws SixsectorException {
         return areaService.deteleArea(ids);
