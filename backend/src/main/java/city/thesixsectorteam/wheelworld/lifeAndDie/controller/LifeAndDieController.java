@@ -4,6 +4,7 @@ import city.thesixsectorteam.wheelworld.common.annotation.Log;
 import city.thesixsectorteam.wheelworld.lifeAndDie.domain.LifeAndDie;
 import city.thesixsectorteam.wheelworld.lifeAndDie.service.LifeAndDieService;
 import city.thesixsectorteam.wheelworld.system.domain.User;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,7 @@ public class LifeAndDieController {
     @Log("查询生/死者数据")
     @GetMapping("lifeList")
     @RequiresPermissions("life:view")
+    @ApiOperation(value = "查询数据信息",notes = "支持条件查询,用户状态,用户名称,用户邮箱,生死状态查询",httpMethod = "GET")
     public List<Map<String,Object>> lifeList(User user,LifeAndDie life){
         return lifeAndDieService.getListByLife(user,life);
     }
@@ -50,6 +52,7 @@ public class LifeAndDieController {
     @Log("初始化数据")
     @PostMapping("saveLife")
     @RequiresPermissions("life:add")
+    @ApiOperation(value = "新增一条数据",notes = "参数为用户对象",httpMethod = "POST")
     public void saveLife(User user){
         lifeAndDieService.saveLife(user);
     }
@@ -78,6 +81,7 @@ public class LifeAndDieController {
     @Log("修改寿命")
     @PostMapping("updateTotalAge")
     @RequiresPermissions("life:update")
+    @ApiOperation(value = "修改一条数据",notes = "传入参数totalAge",httpMethod = "POST")
     public String updateTotalAge(LifeAndDie life){
         return lifeAndDieService.updateTotalAge(life);
     }

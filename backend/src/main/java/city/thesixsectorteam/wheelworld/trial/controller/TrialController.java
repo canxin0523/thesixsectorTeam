@@ -4,6 +4,7 @@ import city.thesixsectorteam.wheelworld.common.annotation.Log;
 import city.thesixsectorteam.wheelworld.common.utils.Util;
 import city.thesixsectorteam.wheelworld.trial.domain.Trial;
 import city.thesixsectorteam.wheelworld.trial.service.TrialService;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,7 @@ public class TrialController {
     @Log("根据type来查询待审还是已审")
     @GetMapping("queryList")
     @RequiresPermissions("trial:view")
+    @ApiOperation(value = "查询数据信息",notes = "传入参数Trial对象实体属性中的两个状态值",httpMethod = "GET")
     public List<Map<String,Object>> queryList(Trial trial){
         return trialService.queryList(trial);
     }
@@ -68,6 +70,7 @@ public class TrialController {
     @Log("审问")
     @PostMapping("trialUpdate")
     @RequiresPermissions("trial:update")
+    @ApiOperation(value = "修改一条数据",notes = "传入参数Trial对象实体属性",httpMethod = "POST")
     public String  trialUpdate(Trial trial){
         return trialService.trialUpdate(trial);
     }

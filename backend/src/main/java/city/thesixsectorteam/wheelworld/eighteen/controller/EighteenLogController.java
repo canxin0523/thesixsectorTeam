@@ -3,6 +3,7 @@ package city.thesixsectorteam.wheelworld.eighteen.controller;
 import city.thesixsectorteam.wheelworld.common.annotation.Log;
 import city.thesixsectorteam.wheelworld.eighteen.domain.EighteenLog;
 import city.thesixsectorteam.wheelworld.eighteen.service.EighteenLogService;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,7 @@ public class EighteenLogController {
     @Log("保存18日志记录信息")
     @PostMapping("saveLog")
     @RequiresPermissions("eightLog:add")
+    @ApiOperation(value = "新增",notes = "新增一条数据,传入参数为EighteenLog实体属性",httpMethod = "POST")
     public String saveLog(EighteenLog eighteenLog){
         return eighteenLogService.saveLog(eighteenLog);
     }
@@ -41,6 +43,7 @@ public class EighteenLogController {
     @Log("查询出数据用户信息，狱名信息，日志信息")
     @GetMapping("logList")
     @RequiresPermissions("eightLog:view")
+    @ApiOperation(value = "查询列表信息",notes = "支持条件查询,参数为userName,eightName两个",httpMethod = "GET")
     public List<Map<String,Object>> logList(String userName,String eightName){
         return eighteenLogService.logList(userName,eightName);
     }

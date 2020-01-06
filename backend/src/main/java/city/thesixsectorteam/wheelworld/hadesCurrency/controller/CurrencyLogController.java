@@ -3,6 +3,7 @@ package city.thesixsectorteam.wheelworld.hadesCurrency.controller;
 import city.thesixsectorteam.wheelworld.common.annotation.Log;
 import city.thesixsectorteam.wheelworld.hadesCurrency.domain.HadesCurrencyLog;
 import city.thesixsectorteam.wheelworld.hadesCurrency.service.CurrencyLogService;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,7 @@ public class CurrencyLogController {
     @Log("查询所有日志")
     @GetMapping("queryAll")
     @RequiresPermissions("currencyLog:view")
+    @ApiOperation(value = "查询",notes = "查询所有日志,传入参数参考HadesCurrencyLog实体类,支持时间区间条件查询",httpMethod = "GET")
     public String queryAll(HadesCurrencyLog hadesCurrencyLog,String beginTime,String endTime){
         return currencyLogService.queryAll(hadesCurrencyLog,beginTime,endTime);
     }
@@ -51,6 +53,7 @@ public class CurrencyLogController {
     @Log("删除日志")
     @DeleteMapping("deteleByIds/{ids}")
     @RequiresPermissions("currencyLog:delete")
+    @ApiOperation(value = "删除",notes = "删除一条记录,传入参数为ids,支持批量删除,需要将id用,号拼接",httpMethod = "GET")
     public String deteleByIds(@NotBlank(message = "{required}") @PathVariable String ids){
         return currencyLogService.deteleByIds(ids);
     }

@@ -3,6 +3,7 @@ package city.thesixsectorteam.wheelworld.soul.controller;
 import city.thesixsectorteam.wheelworld.common.annotation.Log;
 import city.thesixsectorteam.wheelworld.soul.domain.Soul;
 import city.thesixsectorteam.wheelworld.soul.service.SoulService;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,7 @@ public class SoulController {
     @Log("修改")
     @PostMapping("updateSoul")
     @RequiresPermissions("soul:update")
+    @ApiOperation(value = "修改一条数据",notes = "传入参数Soul对象实体属性",httpMethod = "POST")
     public String updateSoul(Soul soul){
         return soulService.updateSoul(soul);
     }
@@ -48,6 +50,7 @@ public class SoulController {
     @Log("查询")
     @GetMapping("queryList")
     @RequiresPermissions("soul:view")
+    @ApiOperation(value = "查询数据信息",notes = "传入参数执行状态executorStatus,不传默认全部参数",httpMethod = "POST")
     public List<Map<String,Object>> queryList(Soul soul){
         return soulService.queryList(soul);
     }
