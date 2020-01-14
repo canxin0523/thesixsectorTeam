@@ -50,7 +50,7 @@ export default {
     height: 100vh;
     overflow: auto;
     background: #f0f2f5 url('image/CommonImage.jpg') no-repeat;
-    background-size: 100%;
+    background-size: cover;
     .content {
       padding: 32px 0;
       flex: 1;
