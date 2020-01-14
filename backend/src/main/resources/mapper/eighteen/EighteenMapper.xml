@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="city.thesixsectorteam.wheelworld.eighteen.dao.EighteenDao">
+
+    <select id="queryEightList" resultType="java.util.Map">
+        select * from t_mingjie_eighteen where 1 = 1
+        <if test="eight.eightName != null and eight.eightName != ''">
+            and  eightName like '%${eight.eightName}%'
+        </if>
+        order by level
+    </select>
+
+    <insert id="addEighteen">
+        insert into t_mingjie_eighteen(eightName,info,level,createTime)
+        values (#{eight.eightName},#{eight.info},#{eight.level},#{eight.createTime})
+    </insert>
+
+    <update id="updateEighteen">
+        update t_mingjie_eighteen set
+        <if test="eight.eightName != null and eight.eightName != ''">
+            eightName = #{eight.eightName},
+        </if>
+        <if test="eight.info != null and eight.info != ''">
+            info = #{eight.info},
+        </if>
+        <if test="eight.level != null and eight.level != ''">
+            level = #{eight.level},
+        </if>
+        <if test="eight.createTime != null and eight.createTime != ''">
+            createTime = #{eight.createTime}
+        </if>
+        where id = #{eight.id}
+    </update>
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="city.thesixsectorteam.wheelworld.eighteen.dao.EighteenLogDao">
+
+    <insert id="saveLog">
+        insert into t_mingjie_eighteen_log (userId,eighteenId,inOrOutTime,status,info)
+        values (#{elog.userId},#{elog.eighteenId},#{elog.inOrOutTime},#{elog.status},#{elog.info})
+    </insert>
+
+    <select id="logList" resultType="java.util.Map">
+        SELECT
+            t2.*, t1.eightName, t3.USERNAME
+        FROM
+            t_mingjie_eighteen t1,
+            t_mingjie_eighteen_log t2,
+            t_user t3
+        WHERE
+            t1.id = t2.eighteenId
+        AND t2.userId = t3.USER_ID
+        <if test="userName!=null and userName != ''">
+            and t3.USERNAME like '%${userName}%'
+        </if>
+        <if test="eightName!=null and eightName != ''">
+            and t1.eightName like '%${eightName}%'
+        </if>
+    </select>
+</mapper>

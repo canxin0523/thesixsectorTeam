@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="city.thesixsectorteam.wheelworld.soul.dao.SoulDao">
+
+    <insert id="savesoul">
+        insert into t_mingjie_soul(userId,executorTime,executorStatus)
+        values(#{soul.userId},#{soul.executorTime},#{soul.executorStatus})
+    </insert>
+
+    <update id="updateSoul">
+        update t_mingjie_soul set
+        <if test="soul.executorId != null and soul.executorId != ''">
+            executorId = #{soul.executorId},
+        </if>
+        <if test="soul.executorInfo != null and soul.executorInfo != ''">
+            executorInfo = #{soul.executorInfo},
+        </if>
+        <if test="soul.executorTime != null and soul.executorTime != ''">
+            executorTime = #{soul.executorTime},
+        </if>
+        <if test="soul.executorStatus != null and soul.executorStatus != ''">
+            executorStatus = #{soul.executorStatus}
+        </if>
+        where id = #{soul.id}
+    </update>
+
+    <select id="queryList" resultType="java.util.Map">
+        SELECT
+            t3.*,t4.USERNAME as executorName
+        FROM
+            (
+                SELECT
+                    t2.*,
+                    t1.username AS userName
+                FROM
+                    t_user t1,
+                    t_mingjie_soul t2
+                WHERE
+                    t1.USER_ID = t2.userId
+            ) t3,
+            t_user t4
+        where t3.executorId = t4.USER_ID
+        <if test="soul.executorStatus != null and soul.executorStatus != ''">
+            and t3.executorStatus = #{soul.executorStatus}
+        </if>
+    </select>
+</mapper>
