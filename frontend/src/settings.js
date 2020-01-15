@@ -1,3 +1,3 @@
 module.exports = {
-  swaggerUrl: 'http://localhost:8301/system/swagger-ui.html'
+  swaggerUrl: 'http://localhost:5432/system/swagger-ui.html'
 }

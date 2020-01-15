@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="city.thesixsectorteam.wheelworld.hadesCurrency.dao.CurrencyLogDao">
+        <!--    保存日志    -->
+        <insert id="saveCurrencyLog">
+            insert into t_mingjie_hadescurrency_log(userId,info,createTime,status)
+            values (#{log.userId},#{log.info},#{log.createTime},#{log.status})
+        </insert>
+        <!-- 日志查询 -->
+        <select id="queryAll" resultType="city.thesixsectorteam.wheelworld.hadesCurrency.domain.HadesCurrencyLog">
+            select * from t_mingjie_hadescurrency_log where 1=1
+            <if test="log.status != null and log.status != ''">
+              and  status = #{log.status},
+            </if>
+            <if test="beginTime != null and beginTime != ''">
+              and  <![CDATA[ and #{beginTime} <= createTime ]]>
+            </if>
+            <if test="endTime != null and endTime != ''">
+              and  <![CDATA[ and #{endTime} >= createTime ]]>
+            </if>
+        </select>
+
+        <!-- 日志删除 -->
+        <delete id="deteleByIds">
+            delete from t_mingjie_hadescurrency_log where id = #{id}
+        </delete>
+</mapper>

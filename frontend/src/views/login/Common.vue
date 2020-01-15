@@ -49,8 +49,8 @@ export default {
     flex-direction: column;
     height: 100vh;
     overflow: auto;
-    background: #f0f2f5 url('https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg') no-repeat center 110px;
-    background-size: 100%;
+    background: #f0f2f5 url('image/CommonImage.jpg') no-repeat;
+    background-size: cover;
     .content {
       padding: 32px 0;
       flex: 1;

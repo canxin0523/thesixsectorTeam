@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="city.thesixsectorteam.wheelworld.plague.dao.PlagueDao">
+
+    <resultMap id="BaseResultMap" type="city.thesixsectorteam.wheelworld.plague.domain.Plague" >
+        <id column="PLAGUE_ID" property="plagueId" jdbcType="BIGINT" />
+        <result column="PLAGUE_NAME" property="plagueName" jdbcType="VARCHAR" />
+        <result column="PLAGUE_STATUS" property="plagueStatus" jdbcType="BIGINT" />
+        <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        PLAGUE_ID, PLAGUE_NAME, PLAGUE_STATUS, CREATE_TIME
+    </sql>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+            <include refid="Base_Column_List" />
+        from
+            t_plague
+    </select>
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+            <include refid="Base_Column_List" />
+        from
+            t_plague
+        where
+            PLAGUE_ID = #{plagueId,jdbcType=BIGINT}
+    </select>
+
+    <update id="updateByPlagueEntity" parameterType="city.thesixsectorteam.wheelworld.plague.domain.Plague">
+        update
+            t_plague
+        set
+            PLAGUE_NAME = #{plagueName,jdbcType=VARCHAR},
+            PLAGUE_STATUS = #{plagueStatus,jdbcType=BIGINT},
+            CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+        where
+            PLAGUE_ID = #{plagueId,jdbcType=BIGINT}
+    </update>
+    <insert id="addPlague" parameterType="city.thesixsectorteam.wheelworld.plague.domain.Plague">
+        insert into
+            t_plague (PLAGUE_ID, PLAGUE_NAME, PLAGUE_STATUS,CREATE_TIME)
+        values
+            (#{plagueId,jdbcType=BIGINT}, #{plagueName,jdbcType=VARCHAR}, #{plagueStatus,jdbcType=BIGINT},
+             #{createTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <delete id="deleteByPlague" parameterType="java.lang.Long">
+        delete from t_plague
+        where PLAGUE_ID = #{plagueId,jdbcType=BIGINT}
+    </delete>
+
+    <delete id="deleteByPlagues" parameterType = "java.util.List">
+        delete from t_plague
+        where PLAGUE_ID in 
+        <foreach collection="list" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+
+</mapper>

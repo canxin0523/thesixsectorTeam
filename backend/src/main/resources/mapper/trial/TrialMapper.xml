@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="city.thesixsectorteam.wheelworld.trial.dao.TrialDao">
+
+    <insert id="saveTrial">
+        insert into t_mingjie_trial (userId,trialTime,type) values (#{trial.userId},#{trial.trialTime},#{trial.type})
+    </insert>
+
+    <select id="queryList" resultType="java.util.Map">
+        SELECT
+        t3.*,t4.USERNAME as trialName
+        FROM
+        (
+        SELECT
+        t2.*,
+        t1.username AS userName
+        FROM
+        t_user t1,
+        t_mingjie_trial t2
+        WHERE
+        t1.USER_ID = t2.userId
+        ) t3,
+        t_user t4
+        where t3.trialUserId = t4.USER_ID
+        <if test="trial.type != null and trial.type != ''">
+            and t3.type = #{trial.type}
+        </if>
+        <if test="trial.types != null and trial.types != ''">
+            and t3.types = #{trial.types}
+        </if>
+    </select>
+
+    <update id="trialUpdate">
+        update t_mingjie_trial set
+        <if test="trial.trialUserId != null and trial.trialUserId != ''">
+            trialUserId = #{trial.trialUserId},
+        </if>
+        <if test="trial.info != null and trial.info != ''">
+            info = #{trial.info},
+        </if>
+        <if test="trial.trialTime!=null and trial.trialTime!=''">
+            trialTime = #{trial.trialTime},
+        </if>
+        <if test="trial.type != null and trial.type != ''">
+            type = #{trial.type}
+        </if>
+        <if test="trial.types != null and trial.types != ''">
+            types = #{trial.types}
+        </if>
+        where id = #{trial.id}
+    </update>
+</mapper>
