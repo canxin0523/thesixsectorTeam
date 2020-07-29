@@ -183,8 +183,7 @@ export default {
       }, {
         title: '邮箱',
         dataIndex: 'email',
-        scopedSlots: { customRender: 'email' },
-        width: 100
+        scopedSlots: { customRender: 'email' }
       }, {
         title: '部门',
         dataIndex: 'deptName'
