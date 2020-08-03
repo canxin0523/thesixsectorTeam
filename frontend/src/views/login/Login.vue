@@ -7,7 +7,7 @@
           <a-alert type="error" :closable="true" v-show="error" :message="error" showIcon
                    style="margin-bottom: 24px;"></a-alert>
           <a-form-item>
-            <a-input size="large"  v-decorator="['name',{rules: [{ required: true, message: '请输入账户名', whitespace: true}]}]">
+            <a-input size="large" v-decorator="['name',{rules: [{ required: true, message: '请输入账户名', whitespace: true}]}]">
               <a-icon slot="prefix" type="user"></a-icon>
             </a-input>
           </a-form-item>

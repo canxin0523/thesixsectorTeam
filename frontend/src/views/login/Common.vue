@@ -55,8 +55,8 @@ export default {
       padding: 300px 0;
       flex: 1;
       @media (min-width: 768px){
-        padding-top: 300px;
-        padding-right: 900px;
+        padding-top: 275px;
+        padding-right: 1000px;
         padding-bottom: 10px;
       }
       .top {
