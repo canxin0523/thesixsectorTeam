@@ -3,7 +3,7 @@
     <div class="content">
       <div class="top">
         <div class="header">
-          <img alt="logo" class="logo" src="static/img/logo.png" />
+          <img alt="logo" class="logo" src="static/img/logo.png"/>
           <span class="title">{{systemName}}</span>
         </div>
         <div class="desc"></div>
@@ -49,13 +49,16 @@ export default {
     flex-direction: column;
     height: 100vh;
     overflow: auto;
-    background: #f0f2f5 url('image/CommonImage.jpg') no-repeat;
-    background-size: cover;
+    background: #f0f2f5 url('image/background.jpg') no-repeat;
+    background-size: 100% 100%;
     .content {
-      padding: 32px 0;
+      padding: 300px 0;
       flex: 1;
       @media (min-width: 768px){
-        padding: 116px 0 10px;
+        //登录页div调整
+        padding-top: 270px;
+        padding-right: 50%;
+        padding-bottom: 10px;
       }
       .top {
         text-align: center;
@@ -67,13 +70,13 @@ export default {
           }
           .logo {
             width: 40px;
-            height: 19px;
+            height: 30px;
             vertical-align: center;
             margin-right: 16px;
           }
           .title {
             font-size: 28px;
-            color: rgba(0,0,0,.85);
+            color: #060003;
             font-family: 'Myriad Pro', 'Helvetica Neue', Arial, Helvetica, sans-serif;
             font-weight: 600;
             position: relative;
