@@ -5,14 +5,12 @@
       <a-form layout="horizontal">
         <a-row >
           <div :class="advanced ? null: 'fold'">
-            <a-col :md="12" :sm="24" >
+            <a-col :md="12" :sm="24">
               <a-form-item
-                label="名称"
+                label="用户名"
                 :labelCol="{span: 4}"
                 :wrapperCol="{span: 18, offset: 2}">
-                <dept-input-tree @change="handleUserChange"
-                                 ref="deptTree">
-                </dept-input-tree>
+                <a-input v-model="queryParams.username"/>
               </a-form-item>
             </a-col>
           </div>
@@ -58,8 +56,8 @@
 import RangeDate from '@/components/datetime/RangeDate'
 
 export default {
-  name: 'currencyList',
-  components: {},
+  name: 'currency',
+  components: {RangeDate},
   data () {
     return {
       queryParams: {},
@@ -158,37 +156,93 @@ export default {
       }]
     }
   },
-    mounted () {
-	  this.fetch()
-	},
-	methods: {
-		fetch (params = {}) {
-		  // 显示loading
-		  this.loading = true
-		  if (this.paginationInfo) {
-		    // 如果分页信息不为空，则设置表格当前第几页，每页条数，并设置查询分页参数
-		    this.$refs.TableInfo.pagination.current = this.paginationInfo.current
-		    this.$refs.TableInfo.pagination.pageSize = this.paginationInfo.pageSize
-		    params.pageSize = this.paginationInfo.pageSize
-		    params.pageNum = this.paginationInfo.current
-		  } else {
-		    // 如果分页信息为空，则设置为默认值
-		    params.pageSize = this.pagination.defaultPageSize
-		    params.pageNum = this.pagination.defaultCurrent
-		  }
-		  this.$post('/currency/currencyList', {
-		    ...params
-		  }).then((r) => {
-		    let data = r.data
-		    const pagination = { ...this.pagination }
-		    pagination.total = data.total
-		    this.dataSource = data.rows
-		    this.pagination = pagination
-		    // 数据加载完毕，关闭loading
-		    this.loading = false
-		  })
-		}
-	}
+  mounted () {
+    this.fetch()
+  },
+  methods: {
+    onSelectChange (selectedRowKeys) {
+      this.selectedRowKeys = selectedRowKeys
+    },
+    toggleAdvanced () {
+      this.advanced = !this.advanced
+      if (!this.advanced) {
+        this.queryParams.createTimeFrom = ''
+        this.queryParams.createTimeTo = ''
+      }
+    },
+    view (record) {
+      this.userInfo.data = record
+      this.userInfo.visiable = true
+    },
+    search () {
+      let {sortedInfo, filteredInfo} = this
+      let sortField, sortOrder, username
+      // 获取当前列的排序和列的过滤规则
+      if (sortedInfo) {
+        sortField = sortedInfo.field
+        sortOrder = sortedInfo.order
+        username = sortedInfo.username
+      }
+      this.fetch({
+        sortField: sortField,
+        sortOrder: sortOrder,
+        username: username,
+        ...this.queryParams,
+        ...filteredInfo
+      })
+    },
+    reset () {
+      // 取消选中
+      this.selectedRowKeys = []
+      // 重置分页
+      this.$refs.TableInfo.pagination.current = this.pagination.defaultCurrent
+      if (this.paginationInfo) {
+        this.paginationInfo.current = this.pagination.defaultCurrent
+        this.paginationInfo.pageSize = this.pagination.defaultPageSize
+      }
+      // 重置列过滤器规则
+      this.filteredInfo = null
+      // 重置列排序规则
+      this.sortedInfo = null
+      // 重置查询参数
+      this.queryParams = {}
+      this.fetch()
+    },
+    handleTableChange (pagination, filters, sorter) {
+      this.sortedInfo = sorter
+      this.fetch({
+        sortField: sorter.field,
+        sortOrder: sorter.order,
+        ...this.queryParams,
+        ...filters
+      })
+    },
+    fetch (params = {}) {
+      this.loading = true
+      if (this.paginationInfo) {
+        // 如果分页信息不为空，则设置表格当前第几页，每页条数，并设置查询分页参数
+        this.$refs.TableInfo.pagination.current = this.paginationInfo.current
+        this.$refs.TableInfo.pagination.pageSize = this.paginationInfo.pageSize
+        params.pageSize = this.paginationInfo.pageSize
+        params.pageNum = this.paginationInfo.current
+      } else {
+        // 如果分页信息为空，则设置为默认值
+        params.pageSize = this.pagination.defaultPageSize
+        params.pageNum = this.pagination.defaultCurrent
+      }
+      this.$get('currency/currencyList', {
+        ...params
+      }).then((r) => {
+        let data = r.data
+        const pagination = { ...this.pagination }
+        pagination.total = data.total
+        this.dataSource = data.rows
+        this.pagination = pagination
+        // 数据加载完毕，关闭loading
+        this.loading = false
+      })
+    }
+  }
 }
 </script>
 
