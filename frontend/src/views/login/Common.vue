@@ -55,8 +55,9 @@ export default {
       padding: 300px 0;
       flex: 1;
       @media (min-width: 768px){
-        padding-top: 275px;
-        padding-right: 1000px;
+        //登录页div调整
+        padding-top: 270px;
+        padding-right: 50%;
         padding-bottom: 10px;
       }
       .top {
@@ -75,7 +76,7 @@ export default {
           }
           .title {
             font-size: 28px;
-            color: rgba(0,0,0,.85);
+            color: #060003;
             font-family: 'Myriad Pro', 'Helvetica Neue', Arial, Helvetica, sans-serif;
             font-weight: 600;
             position: relative;
